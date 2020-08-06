@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/radar/.vs
+/radar/Project1/.vs/Project1/v15
+/radar/Project1/Debug
+/radar/Project1/Project1/Debug
