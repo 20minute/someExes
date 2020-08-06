@@ -1,12 +1,17 @@
 <?php 
 include_once 'functions.php';
+$close = 0;
+if(isset($_GET["close"])) {
+  $close = $_GET["close"];
+
+}
 ?>
 <!doctype html>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Page d'acceuil de l'Armada.On peut voir les informations simples comme un visiteur et les informations détaillées après la connection.">
+    <meta name="description" content="A product survey.">
     <meta name="author" content="lijun">
     
 
@@ -38,13 +43,24 @@ include_once 'functions.php';
     </form>
   
     </div > <!-- container -->
+
+
+<?php 
+      echo $close;
+      if($close == 1) {
+?>
+        <script language="javascript">
+        window.close();
+        </script>
+<?php
+      }
+?>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <!--script src="scripts/main.js"></script-->
-    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script-->
+    
   </body>
 </html>

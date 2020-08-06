@@ -17,7 +17,8 @@
     fputcsv($fcon,  $res);
     fclose($fcon);
 
-    echo "<script>alert('Thank you');location.href='close.php'</script>";
+    $close = 1;
+    echo "<script>alert('Thank you');location.href='index.php?close=$close'</script>";
 
 ?>
 
