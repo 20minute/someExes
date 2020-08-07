@@ -20,8 +20,8 @@ void createObjects(std::vector<Object>& objects)
 {
 	int nb_objects = static_cast<int>( getFloatFromRange(1.f,3.f));
 	for (int i = 0; i < nb_objects; i++) {
-		float x = getFloatFromRange(-1.f, 1.f);
-		float y = getFloatFromRange(-1.f, 1.f);
+		float x = getFloatFromRange(-10.f, 10.f);
+		float y = getFloatFromRange(-10.f, 10.f);
 		int t = static_cast<int>(getFloatFromRange(0.f, 2.f));
 		if (t) {
 			Object t(Vector3D(x, y, 0), 'c');
@@ -51,6 +51,10 @@ void printResult(std::vector<Object>& objects) {
 	memset(&m_res, '0', sizeof(m_res));
 
 	for (int i = 0; i < objects.size(); i++) {
+		// detect rayon.
+		float rayon = 10;
+		// if object is too far, we ignore it.
+		if (objects[i].Position().Magnitude() > rayon) { continue; }
 		float dotProduct = objects[i].Position().DotProduct(Vector3D::AXIS_X);
 		//find angle between target and object.
 		float angle = acosf(dotProduct / objects[i].Position().Magnitude());
