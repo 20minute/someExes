@@ -4,9 +4,9 @@
     $fields = readQuestions();
     
     $check = 0;
+    $names = getNames($fields);
     $res = array();
-    foreach($fields as $value) {
-        $name = $value->name;
+    foreach($names as $name) {
         $tmp = $_POST["$name"];
         array_push($res ,  $tmp);
     }
@@ -16,9 +16,7 @@
     // save the column headers
     fputcsv($fcon,  $res);
     fclose($fcon);
-
-    $close = 1;
-    echo "<script>alert('Thank you');location.href='index.php?close=$close'</script>";
+    header('Location: close.php');
 
 ?>
 

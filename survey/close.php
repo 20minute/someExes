@@ -4,14 +4,17 @@
   </head>
 
   <body>
-    <?php echo "<script type='text/javascript'>closeWin();</script>"; ?>
-    <script language="javascript">
+
+  <h1>
+    Thank you for your participation, please close the window.
+  </h1>
+    <!-- <script language="javascript">
 
         function closeWin() {
             window.opener=null;
             window.open('','_self');
             window.close();
         }
-    </script>
+    </script> -->
   </body>
 </html>

@@ -21,5 +21,5 @@ modify the function addQuestion($type, $question, $name) in functions.php
 
 
 
-PS: there is a bug when closing the window
-TODO : data check.
+PS: there is a bug when closing the window (fixed)
+TODO : data check. (DONE)

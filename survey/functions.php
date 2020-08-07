@@ -11,37 +11,6 @@ class Question {
     }
 }
 
-function addTextQuestion($question, $name) {
-?>
-    <div class="form-group">
-    <label for="<?= $name?>"><?= $question ?></label>
-    <textarea class="form-control" name="<?= $name?>" rows="3"></textarea>
-</div>
-
-<?php
-}
-?>
-
-<?php
-function addScaleQuestion($question, $name) {
-?>
-    <div class="form-group">
-        <label for="<?= $name?>"><?= $question ?></label>
-        <select class="form-control" name="<?= $name?>">
-        <option value="1">very negative</option>
-        <option value="2">negative</option>
-        <option selected="selected" value="3">neutral</option>
-        <option value="4">positive</option>
-        <option value="5">very positive</option>
-        </select>
-</div>
-
-<?php
-}
-?>
-
-
-<?php
 function addQuestion($type, $question, $name) {
     switch($type) {
 
@@ -49,7 +18,7 @@ function addQuestion($type, $question, $name) {
 ?>
             <div class="form-group">
             <label for="<?= $name?>"><?= $question ?></label>
-            <textarea class="form-control" name="<?= $name?>" rows="3"></textarea>
+            <textarea class="form-control" name="<?= $name?>" id="<?= $name?>"></textarea>
             </div>
 <?php
         break;
@@ -58,13 +27,14 @@ function addQuestion($type, $question, $name) {
 ?>
             <div class="form-group">
                 <label for="<?= $name?>"><?= $question ?></label>
-                <select class="form-control" name="<?= $name?>">
+                <select class="form-control"  name="<?= $name?>" id="<?= $name?>" >
                     <option value="1">very negative</option>
                     <option value="2">negative</option>
                     <option selected="selected" value="3">neutral</option>
                     <option value="4">positive</option>
                     <option value="5">very positive</option>
                 </select>
+
             </div>
 <?php
         break;
@@ -75,15 +45,6 @@ function addQuestion($type, $question, $name) {
 <?php
 
 function addQuestionsInHTML(){
-    // addQuestions();
-
-    // foreach($questions as $question) {
-    //     $type = $question[0];
-    //     $context = $question[1];
-    //     $name = $question[2];
-    //     addQuestion($type, $question, $name);
-    // }
-
     $file = fopen('questions.csv', 'r');
     while (($line = fgetcsv($file)) !== FALSE) {
     //$line is an array of the csv elements
@@ -99,7 +60,6 @@ function addQuestionsInHTML(){
 }
 
 function readQuestions(){
-
     $questions = array();
     $file = fopen('questions.csv', 'r');
     while (($line = fgetcsv($file)) !== FALSE) {
@@ -114,5 +74,16 @@ function readQuestions(){
     fclose($file);
 
     return $questions;
+}
+
+function getNames($fields){
+    
+    $res = array();
+    foreach($fields as $value) {
+        $name = $value->name;
+        array_push($res ,  $name);
+    }
+
+    return $res;
 }
 ?>
