@@ -7,7 +7,7 @@ I used a library of Vector3D which was created by myself.
 This program simulates the radar workflow: detect positions of objects, print the positions on the screen, clear the objects.
 
 I suppose The target is always at (0,0,0) and consider car or person is a point.
-
+I used random position to simulate the position of car or person.
 I think the test is focus on direction of object so i don't pay attention on the volume of a car. If we consider the volume, then just add a circle collider at the center of car and calculate the min distance between the collider and the target.
 
 

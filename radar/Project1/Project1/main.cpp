@@ -6,7 +6,7 @@
 
 #include "Object.h"
 
-
+/* get a float number in a range */
 float getFloatFromRange(float from, float to)
 {
 	std::random_device rd;  //Will be used to obtain a seed for the random number engine
@@ -15,12 +15,12 @@ float getFloatFromRange(float from, float to)
 	return dis(gen);
 }
 
+/* detect objects */
 void createObjects(std::vector<Object>& objects)
 {
 	int nb_objects = static_cast<int>( getFloatFromRange(1.f,3.f));
-	std::cout <<"nb_objects "<<nb_objects<< std::endl;
 	for (int i = 0; i < nb_objects; i++) {
-		float x = getFloatFromRange(-1.f,1.f);
+		float x = getFloatFromRange(-1.f, 1.f);
 		float y = getFloatFromRange(-1.f, 1.f);
 		int t = static_cast<int>(getFloatFromRange(0.f, 2.f));
 		if (t) {
@@ -35,11 +35,16 @@ void createObjects(std::vector<Object>& objects)
 
 }
 
-
 void clearObjects(std::vector<Object>& objects) {
 	objects.clear();
 }
 
+/* 
+   'x' : both of car and person
+   'p' : person
+   'c' : car
+   '0' : empty
+ */
 void printResult(std::vector<Object>& objects) {
 	std::array<std::array<char,3>, 3> m_res;
 	//initialize with 0
@@ -47,13 +52,16 @@ void printResult(std::vector<Object>& objects) {
 
 	for (int i = 0; i < objects.size(); i++) {
 		float dotProduct = objects[i].Position().DotProduct(Vector3D::AXIS_X);
+		//find angle between target and object.
 		float angle = acosf(dotProduct / objects[i].Position().Magnitude());
 		double pi = 2 * acos(0.0);
 		angle = angle *180 / pi;
 		// bug in crossProduct
+		// if target if in front of object.
 		if (objects[i].Position().CrossProduct(Vector3D::AXIS_X).Normalized().Z() == 1) {
 			angle = -angle;
 		}
+		
 		if (-22.5f < angle && angle <= 22.5f) { 
 			if (m_res[1][2] == objects[i].Name() || m_res[1][2] == '0') {
 				m_res[1][2] = objects[i].Name();
@@ -120,7 +128,7 @@ void printResult(std::vector<Object>& objects) {
 		}
 	}
 
-
+	//print 3x3 array
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
 			std::cout << m_res[i][j] << " ";
@@ -160,6 +168,5 @@ int main()
 			break;
 		}
 	}
-
 	return 0;
 }
