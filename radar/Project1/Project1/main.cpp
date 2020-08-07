@@ -147,7 +147,7 @@ int main()
 {
 	std::vector<Object> objectsPool;
 	while (1) {
-		std::cout << "get objects' position press g" << std::endl;
+		std::cout << "get positions of objects press g" << std::endl;
 		std::cout << "clear objects press c" << std::endl;
 		std::cout << "print result press p" << std::endl;
 		std::cout << "quit program press q" << std::endl;
