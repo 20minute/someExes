@@ -20,6 +20,4 @@ To check if target's vector is in front of or behind of (1,0,0), i used crossPro
 
 PS: There is a cross product issue in my library of Vector3D. (fixed)
 
-Question: If a car and a person are at same area, I don't know which one should be printed at the screen. or both of them should be printed?
-
 Advanced : we can use BSP or octree to divide the space...

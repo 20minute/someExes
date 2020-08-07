@@ -54,14 +54,70 @@ void printResult(std::vector<Object>& objects) {
 		if (objects[i].Position().CrossProduct(Vector3D::AXIS_X).Normalized().Z() == 1) {
 			angle = -angle;
 		}
-		if (-22.5f < angle && angle <= 22.5f) { m_res[1][2] = objects[i].Name(); }
-		else if (22.5f < angle && angle <= 67.5f) { m_res[0][2] = objects[i].Name(); }
-		else if (67.5f < angle && angle <= 112.5f) { m_res[0][1] = objects[i].Name(); }
-		else if (112.5f < angle && angle <= 157.5f) { m_res[0][0] = objects[i].Name(); }
-		else if ((157.5f < angle && angle <= 180.f) || (-180.f < angle && angle < -157.5f)) { m_res[1][0] = objects[i].Name(); }
-		else if (-157.5f < angle && angle <= -112.5f) { m_res[2][0] = objects[i].Name(); }
-		else if (-112.5f < angle && angle <= -67.5f) { m_res[2][1] = objects[i].Name(); }
-		else if (-67.5f < angle && angle <= -22.5f) { m_res[2][2] = objects[i].Name(); }
+		if (-22.5f < angle && angle <= 22.5f) { 
+			if (m_res[1][2] == objects[i].Name() || m_res[1][2] == '0') {
+				m_res[1][2] = objects[i].Name();
+			}
+			else {
+				m_res[1][2] = 'x';
+			}
+		}
+		else if (22.5f < angle && angle <= 67.5f) {
+			if (m_res[0][2] == objects[i].Name() || m_res[0][2] == '0') {
+				m_res[0][2] = objects[i].Name();
+			}
+			else {
+				m_res[0][2] = 'x';
+			}
+		}
+		else if (67.5f < angle && angle <= 112.5f) {
+			if (m_res[0][1] == objects[i].Name() || m_res[0][1] == '0') {
+				m_res[0][1] = objects[i].Name();
+			}
+			else {
+				m_res[0][1] = 'x';
+			}
+		}
+		else if (112.5f < angle && angle <= 157.5f) {
+			if (m_res[0][0] == objects[i].Name() || m_res[0][0] == '0') {
+				m_res[0][0] = objects[i].Name();
+			}
+			else {
+				m_res[0][0] = 'x';
+			}
+		}
+		else if ((157.5f < angle && angle <= 180.f) || (-180.f < angle && angle < -157.5f)) {
+			if (m_res[1][0] == objects[i].Name() || m_res[1][0] == '0') {
+				m_res[1][0] = objects[i].Name();
+			}
+			else {
+				m_res[1][0] = 'x';
+			}
+		}
+		else if (-157.5f < angle && angle <= -112.5f) {
+			if (m_res[2][0] == objects[i].Name() || m_res[2][0] == '0') {
+				m_res[2][0] = objects[i].Name();
+			}
+			else {
+				m_res[2][0] = 'x';
+			}
+		}
+		else if (-112.5f < angle && angle <= -67.5f) {
+			if (m_res[2][1] == objects[i].Name() || m_res[2][1] == '0') {
+				m_res[2][1] = objects[i].Name();
+			}
+			else {
+				m_res[2][1] = 'x';
+			}
+		}
+		else if (-67.5f < angle && angle <= -22.5f) {
+			if (m_res[2][2] == objects[i].Name() || m_res[2][2] == '0') {
+				m_res[2][2] = objects[i].Name();
+			}
+			else {
+				m_res[2][2] = 'x';
+			}
+		}
 	}
 
 
